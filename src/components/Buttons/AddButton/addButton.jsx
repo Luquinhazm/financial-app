@@ -1,10 +1,12 @@
 import { IoIosAddCircle } from 'react-icons/io'
 
-export default function AddButton() {
+export default function AddButton({onClick}) {
+    
+
     return (
         <div>
-            <button>
-                <IoIosAddCircle size={72}></IoIosAddCircle>
+            <button className=''>
+                <IoIosAddCircle onClick={onClick} size={72}></IoIosAddCircle>
             </button>
         </div>
     )
