@@ -8,12 +8,19 @@ import Form from "@/components/Form/form"
 export default function Modal() {
     const [isActive, setIsActive] = useState(false)
 
+    function handleClose(e){
+        if(e.target.id === "container"){
+            setIsActive(false)
+        }
+    }
+
     return (
 
         <>
             {isActive ?
                 <div
-                
+                id="container"
+                onClick={handleClose}
                  className=" h-full w-full  bg-zinc-950 bg-opacity-80 backdrop-blur-sm fixed rounded-3xl flex flex-col justify-center items-center ">
                     <div className="w-11/12 bg-black h-[80%] rounded-3xl  max-w-lg flex flex-col justify-center items-center relative" >
                         <Form />
