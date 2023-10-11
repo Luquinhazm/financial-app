@@ -1,36 +1,42 @@
 'use client'
 import React, { useState } from 'react'
+import { gastos } from "@/data/gastos.js"
 import CardGrupo from "@/components/Cards/CardGrupo/CardGrupo"
 import BackForwardButton from "@/components/Buttons/BackForwardButton/BackForwardButton"
+import Button from "@/components/Buttons/Button/Button"
+
 
 export default function Painel() {
     const [show, setShow] = useState(0)
     const [hidden, setHidden] = useState(true)
-    // <button className='shadow mt-4 text-center h-8 w-8 rounded-full' onClick={() => { setHidden(false) }}>{">"}</button>
+    const util = gastos
+
     return (
         <>
-            {hidden ?
+            {hidden
+                ?
+                // Modo encolhido
                 <BackForwardButton BackOrForward={"Forward"} onClick={() => { setHidden(false) }} />
                 :
+                // Modo Expandido
                 <div className='w-full  flex flex-col max-w-sm'>
-                    <div className='flex gap-2 py-3 justify-between my-1'>
+                    <div className='flex gap-2 py-3 justify-between my-1'>  {/* Grupo de Botões */}
                         <div className='space-x-2'>
-                            <button className='p-1 rounded-md shadow' onClick={() => { setShow(0) }}>Credito</button>
-                            <button className='p-1 rounded-md shadow' onClick={() => { setShow(1) }}>Debito</button>
+                            <Button label={"Crédito"} onClick={() => { setShow(0) }} />
+                            <Button label={"Debito"} onClick={() => { setShow(1) }} />
                         </div>
-
                         <BackForwardButton BackOrForward={"back"} onClick={() => { setHidden(true) }} />
                     </div>
 
-                    <div className='flex flex-auto py-3 flex-shrink-0 w-full max-w-sm '>
-                        <div className={show === 0 ? 'flex gap-4 flex-col min-h-[85svh] flex-shrink-0 w-full' : 'hidden flex-col min-h-[85vh] flex-shrink-0 w-full'}>
-                            <CardGrupo></CardGrupo>
+                    <div className='flex flex-col flex-1 py-3 flex-shrink-0 w-full max-w-sm '>
+
+
+                        <div className={`gap-4 flex-col min-h-[85svh] flex-shrink-0 w-full ${show === 0 ? "flex" : "hidden"}`}>
+                            <CardGrupo gastos={gastos}></CardGrupo>
                         </div>
 
-                        <div className={show === 1 ? 'flex gap-4 flex-col min-h-[85svh] flex-shrink-0 w-full ' : 'hidden  flex-col min-h-[85svh] flex-shrink-0 w-full'}>
-                            <div className=' shadow-md w-full flex flex-col flex-1'>
-                                <h3>title</h3>
-                            </div>
+                        <div className={`gap-4 flex-col min-h-[85svh] flex-shrink-0 w-full ${show === 1 ? "flex" : "hidden"}`}>
+                            <CardGrupo></CardGrupo>
                         </div>
                     </div>
                 </div>
