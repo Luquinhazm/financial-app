@@ -2,7 +2,7 @@ import AddButton from '@/components/Buttons/AddButton/addButton'
 import React from 'react'
 import CardExpenses from "../CardExpenses/CardExpenses"
 
-export default function CardGrupo({ gastos }) {
+export default function GroupCardExpenses({ gastos }) {
     return (
         <div className='shadow-md p-2 w-full gap-4 flex flex-col flex-1'>
             {gastos ?

@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { gastos } from "@/data/gastos.js"
-import CardGrupo from "@/components/Cards/CardGrupo/CardGrupo"
+import GroupCardExpenses from "@/components/Cards/GroupCardExpenses/GroupCardExpenses"
 import BackForwardButton from "@/components/Buttons/BackForwardButton/BackForwardButton"
 import Button from "@/components/Buttons/Button/Button"
 
@@ -9,7 +9,6 @@ import Button from "@/components/Buttons/Button/Button"
 export default function Painel() {
     const [show, setShow] = useState(0)
     const [hidden, setHidden] = useState(true)
-    const util = gastos
 
     return (
         <>
@@ -32,11 +31,11 @@ export default function Painel() {
 
 
                         <div className={`gap-4 flex-col min-h-[85svh] flex-shrink-0 w-full ${show === 0 ? "flex" : "hidden"}`}>
-                            <CardGrupo gastos={gastos}></CardGrupo>
+                            <GroupCardExpenses gastos={gastos}></GroupCardExpenses>
                         </div>
 
                         <div className={`gap-4 flex-col min-h-[85svh] flex-shrink-0 w-full ${show === 1 ? "flex" : "hidden"}`}>
-                            <CardGrupo></CardGrupo>
+                            <GroupCardExpenses></GroupCardExpenses>
                         </div>
                     </div>
                 </div>
