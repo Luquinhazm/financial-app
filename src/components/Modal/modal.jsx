@@ -7,7 +7,6 @@ import MessageSucess from "../MessageSucess/messageSucess"
 
 export default function Modal() {
     const [isActive, setIsActive] = useState(false)
-
     const [sucess, setSucess] = useState(false)
 
     function handleSubmit(e) {
@@ -23,32 +22,28 @@ export default function Modal() {
     }
 
     return (
-
         <>
             {isActive ?
                 <div
                     id="container"
                     onClick={handleClose}
-                    className=" h-full w-full  bg-zinc-950 bg-opacity-80 backdrop-blur-sm fixed top-0 flex flex-col justify-center items-center ">
-                    <div className="w-11/12 bg-black h-[80%] rounded-3xl  max-w-lg flex flex-col justify-center items-center relative" >
-                        <Form onSubmit={handleSubmit}/>
+                    className=" h-full w-full bg-opacity-80 backdrop-blur-sm fixed top-0 flex flex-col justify-center items-center ">
+                    <div className="w-11/12 bg-slate-50 shadow-md h-[80%] rounded-3xl  max-w-lg flex flex-col justify-center items-center relative" >
+                        <Form onSubmit={handleSubmit} />
                         <button
                             onClick={() => setIsActive(false)}
-                            className="absolute text-white top-5"
+                            className="absolute top-5"
                         >
-                            <IoCloseCircleSharp size={72} />
+                            <IoCloseCircleSharp  size={72} />
                         </button>
                     </div>
-
-                </div> :
+                </div> 
+                :
                 <div className="fixed bottom-5 right-10">
                     <AddButton onClick={() => setIsActive(true)} />
                 </div>
             }
-
             {sucess && <MessageSucess />}
         </>
-
-
     )
 }
