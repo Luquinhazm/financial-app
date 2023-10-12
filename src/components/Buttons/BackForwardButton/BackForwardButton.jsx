@@ -9,10 +9,10 @@ export default function BackForwardButton({ BackOrForward, onClick }) {
             botao = <></>
             break;
         case "back":
-            botao = <button className='shadow mt-4 text-center h-8 w-8 rounded-full' onClick={onClick}> {"<"} </button>
+            botao = <button className='shadow  text-center h-8 w-8 rounded-full' onClick={onClick}> {"<"} </button>
             break;
         case 'forward':
-            botao = <button className='shadow mt-4 text-center h-8 w-8 rounded-full' onClick={onClick}> {">"} </button>
+            botao = <button className='shadow  text-center h-8 w-8 rounded-full' onClick={onClick}> {">"} </button>
             break
         default:
             botao = <></>

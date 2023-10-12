@@ -14,12 +14,15 @@ export default function Painel() {
             {hidden
                 ?
                 // Modo encolhido
-                <BackForwardButton BackOrForward={"Forward"} onClick={() => { setHidden(false) }} />
+                <div className='mt-4'>
+                    <BackForwardButton BackOrForward={"Forward"} onClick={() => { setHidden(false) }} />
+                </div>
+
                 :
                 // Modo Expandido
-                <div className='w-full  flex flex-col max-w-sm'>
-                    <div className='flex gap-2 py-3 justify-between my-1'>  {/* Grupo de Botões */}
-                        <div className='space-x-2'>
+                <div className='w-full mt-4 flex flex-col max-w-sm'>
+                    <div className='flex gap-2 items-center justify-between my-1'>  {/* Grupo de Botões */}
+                        <div className=' flex items-center justify-center space-x-2'>
                             <Button label={"Crédito"} onClick={() => { setShow(0) }} />
                             <Button label={"Debito"} onClick={() => { setShow(1) }} />
                         </div>

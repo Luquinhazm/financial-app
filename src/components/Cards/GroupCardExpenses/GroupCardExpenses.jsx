@@ -4,7 +4,7 @@ import CardExpenses from "../CardExpenses/CardExpenses"
 
 export default function GroupCardExpenses({ gastos }) {
     return (
-        <div className='shadow-md p-2 w-full gap-4 flex flex-col flex-1'>
+        <div className='w-full gap-5 flex flex-col flex-1'>
             {gastos ?
                 gastos.map((grupo) => <CardExpenses key={grupo.grupo} grupo={grupo} />)
                 :
