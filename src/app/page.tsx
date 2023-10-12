@@ -1,10 +1,16 @@
 import Modal from "@/components/Modal/modal"
 import Painel from "@/components/Painel/painel"
 import CardResult from "@/components/Cards/CardResult/cardResult"
+import Form from "@/components/Form/form"
+
+
+function ComponentQualquer(){
+  return <h1>Sou um componente teste</h1>
+}
 
 export default function Home() {
-
-
+ const formAdicionar = <Form />
+const teste = <ComponentQualquer/>
 
   return (
     <div className="relative flex flex-col items-center">
@@ -15,7 +21,9 @@ export default function Home() {
           <div className="  rounded-md shadow flex-auto"></div>
         </div>
       </main>
-      <Modal />
+
+      <Modal component={formAdicionar} postion={"fixed bottom-10 right-10"}/>
+      <Modal component={teste} postion={"bottom-10 right-10"}/>
     </div>
   )
 }
