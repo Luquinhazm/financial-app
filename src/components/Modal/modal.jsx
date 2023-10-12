@@ -29,13 +29,13 @@ export default function Modal() {
                     onClick={handleClose}
                     className=" h-full w-full bg-opacity-80 backdrop-blur-sm fixed top-0 flex flex-col justify-center items-center ">
                     <div className="w-11/12 bg-slate-50 shadow-md h-[80%] rounded-3xl  max-w-lg flex flex-col justify-center items-center relative" >
-                        <Form onSubmit={handleSubmit} />
+                        {/* <Form onSubmit={handleSubmit} />
                         <button
                             onClick={() => setIsActive(false)}
                             className="absolute top-5"
                         >
                             <IoCloseCircleSharp  size={72} />
-                        </button>
+                        </button> */}
                     </div>
                 </div> 
                 :
