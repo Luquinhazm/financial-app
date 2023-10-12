@@ -5,7 +5,6 @@ import GroupCardExpenses from "@/components/Cards/GroupCardExpenses/GroupCardExp
 import BackForwardButton from "@/components/Buttons/BackForwardButton/BackForwardButton"
 import Button from "@/components/Buttons/Button/Button"
 
-
 export default function Painel() {
     const [show, setShow] = useState(0)
     const [hidden, setHidden] = useState(true)
@@ -29,7 +28,6 @@ export default function Painel() {
 
                     <div className='flex flex-col flex-1 py-3 flex-shrink-0 w-full max-w-sm '>
 
-
                         <div className={`gap-4 flex-col min-h-[85svh] flex-shrink-0 w-full ${show === 0 ? "flex" : "hidden"}`}>
                             <GroupCardExpenses gastos={gastos}></GroupCardExpenses>
                         </div>
@@ -37,6 +35,7 @@ export default function Painel() {
                         <div className={`gap-4 flex-col min-h-[85svh] flex-shrink-0 w-full ${show === 1 ? "flex" : "hidden"}`}>
                             <GroupCardExpenses></GroupCardExpenses>
                         </div>
+
                     </div>
                 </div>
             }
