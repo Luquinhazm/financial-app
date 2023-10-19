@@ -1,6 +1,7 @@
 export const gastos = [
   {
     grupo: "Custos Fixos",
+    metodo: "credito",
     despesas: [
       {
         nome: "Faculdade",
@@ -36,6 +37,7 @@ export const gastos = [
   },
   {
     grupo: "Cartão da Mãe",
+    metodo: "debito",
     despesas: [
       {
         nome: "Alura",
@@ -70,3 +72,7 @@ export const gastos = [
     ],
   },
 ];
+
+
+console.log(gastos.map((e)=>{e.despesas.map((e)=>{e.categoria})}))
+
