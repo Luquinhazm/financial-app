@@ -4,17 +4,11 @@ import Input from "../Input/input"
 import SendButton from '../Buttons/SendButton/sendButton'
 import MessageSucess from "../MessageSucess/messageSucess"
 import { GastosContext } from "@/context/GastosContext"
+import Select from "@/components/select/Select"
 
 export default function Form() {
-    const Dados = useContext(GastosContext)
+    const { dados, categoriasArray } = useContext(GastosContext)
     const [sucess, setSucess] = useState(false)
-    const categoriasUnicas = new Set();
-    Dados.forEach((e) => {
-        e.despesas.forEach((d) => {
-            categoriasUnicas.add(d.categoria);
-        });
-    });
-    const categoriasArray = Array.from(categoriasUnicas);
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -27,38 +21,51 @@ export default function Form() {
             <div className="w-11/12 bg-slate-50 shadow-md h-[80%] rounded-3xl max-w-lg flex flex-col justify-center items-center " >
                 <form onSubmit={handleSubmit} action="" className="flex flex-col gap-4 w-4/5 max-w-lg">
                     <div className="flex justify-between gap-2">
-                        <select name="" id="" className="rounded-md h-10 bg-inherit border-zinc-400 border-2 w-full px-1">
-                            <option value="categoria" className="rounded-md h-10 bg-inherit border-zinc-400 border-2 w-full px-1" selected disabled>Selecione um grupo</option>
-                            {Dados.map((e) => {
+                        <Select
+                            callback={() => {
+                                return dados.map((e) => {
+                                    return (
+                                        <option className="rounded-md h-10 bg-inherit border-zinc-400 border-2 w-full px-1">{e.grupo}</option>
+                                    )
+                                })
+                            }}
+                            valueSelect={"grupo"}
+                            label={"Selecione um grupo"}
+                        />
 
-                                return (
-                                    <option className="rounded-md h-10 bg-inherit border-zinc-400 border-2 w-full px-1">{e.grupo}</option>
-                                )
-                            })}
-                        </select>
-                        <div className="rounded-md h-10 w-10 bg-inherit border-zinc-400 border-2">+</div>
                     </div>
                     <Input placeholder='Descrição' type="text" />
                     <Input placeholder='Valor' type="number" />
                     <div className="flex justify-between gap-2">
-                        <select name="" id="" className="rounded-md h-10 bg-inherit border-zinc-400 border-2 w-full px-1">
-                            <option value="categoria" selected disabled>Selecione a categoria</option>
-                            {categoriasArray.map((categoria, index) => (
-                                <option key={index} className="rounded-md h-10 bg-inherit border-zinc-400 border-2 w-full px-1">{categoria}</option>
-                            ))}
-                        </select>
-                        <input type="color" className="rounded-md w-14 h-10 bg-inherit border-zinc-400 border-2 " />
+                        <Select
+                            callback={() => {
+                                return categoriasArray.map((categoria, index) => (
+                                    <option key={index} className="rounded-md h-10 bg-inherit border-zinc-400 border-2 w-full px-1">{categoria}</option>
+                                ))
+                            }}
+                            valueSelect={"Categoria"}
+                            label={"Selecione uma categoria"}
+                        />
+
+                        <input type="color"  value="#ffffff" className="rounded-md w-14 h-10 bg-inherit border-zinc-400 border-2 " />
                     </div>
 
-                    <select name="select" id="select" className="rounded-md h-10 bg-inherit border-zinc-400 border-2 px-1">
-                        <option value="Selecione" disabled selected>Selecione o metódo de pagamento</option>
-                        <option value="Débito">Débito</option>
-                        <option value="Crédito">Crédito</option>
-                    </select>
+                    <Select
+                        callback={() => {
+                            return (
+                                <>
+                                    <option value="Débito">Débito</option>
+                                    <option value="Crédito">Crédito</option>
+                                </>
+                            )
+                        }}
+                        valueSelect={"metódo"}
+                        label={"Selecione o método de pagamento"}
+                    />
+
                     <SendButton />
                 </form >
             </div>
-
             {sucess && <MessageSucess />}
         </>
     )
