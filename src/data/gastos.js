@@ -72,7 +72,3 @@ export const gastos = [
     ],
   },
 ];
-
-
-console.log(gastos.map((e)=>{e.despesas.map((e)=>{e.categoria})}))
-
